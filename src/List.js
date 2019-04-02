@@ -7,17 +7,19 @@ class List extends React.Component {
       <ul>
         {this.props.result.map(item => (
           <li key={item.id}>
-            <div className="item-name">
-              <a href={item.html_url}>
-                <h1>{item.name}</h1>
-              </a>
-              <div className="item-stars">{item.stargazers_count}</div>
-            </div>
-            <div className="item-full-name">
-              <h3>{item.full_name}</h3>
-            </div>
-            <div className="item-desc">
-              <h2>{item.description}</h2>
+            <div className="result-item">
+              <div className="item-name">
+                <a href={item.html_url}>
+                  <h3>{item.name}</h3>
+                </a>
+                <div className="item-stars">🌟{item.stargazers_count}</div>
+              </div>
+              <div className="item-full-name">
+                <p>{item.full_name}</p>
+              </div>
+              <div className="item-desc">
+                <h4>{item.description}</h4>
+              </div>
             </div>
           </li>
         ))}

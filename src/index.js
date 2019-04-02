@@ -34,21 +34,24 @@ class App extends React.Component {
   };
   render() {
     return (
-      <div>
-        <div>
-          <h1>Github Repository Search</h1>
+      <React.Fragment>
+        <div className="app-bar">Github Repository Search</div>
+        <div className="app-input-btn">
+          <input
+            className="input-search"
+            type="text"
+            onChange={this.handleChange}
+            value={this.state.value}
+            placeholder="Repo name"
+          />
+          <button className="search-btn" onClick={this.handleSubmit}>
+            🔍
+          </button>
         </div>
-        <input
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.value}
-          placeholder="Repo name"
-        />
-        <button onClick={this.handleSubmit}>Submit</button>
-        <div>
+        <div className="result">
           <List result={this.state.result} />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
