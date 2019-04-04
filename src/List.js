@@ -1,104 +1,101 @@
 import React from "react";
 
-class List extends React.Component {
-  render() {
-    console.log(this.props.result);
-    return (
-      <ul>
-        {this.props.result.map(item => (
-          <li key={item.id}>
-            <div className="result-item">
-              <div className="item-name">
-                <a href={item.html_url}>
-                  <h3>{item.name}</h3>
-                </a>
-                <div className="item-stars">🌟{item.stargazers_count}</div>
-              </div>
-              <div className="item-full-name">
-                <p>{item.full_name}</p>
-              </div>
-              <div className="item-desc">
-                <h4>{item.description}</h4>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-}
+const List = props => {
+  return (
+    <React.Fragment>
+      {props.result.map(item => (
+        <div className="result-item" key={item.id}>
+          <div className="item-name">
+            <a href={item.html_url}>
+              <span>{item.name}</span>
+            </a>
+            <div className="item-stars">🌟{item.stargazers_count}</div>
+          </div>
+          <div className="item-full-name">
+            <span>{item.full_name}</span>
+          </div>
+          <div className="item-desc">
+            <span>{item.description}</span>
+          </div>
+        </div>
+      ))}
+    </React.Fragment>
+  );
+};
 export default List;
 
-// id: 29028775
-// node_id: "MDEwOlJlcG9zaXRvcnkyOTAyODc3NQ=="
-// name: "react-native"
-// full_name: "facebook/react-native"
-// private: false
-// owner: Object
-// html_url: "https://github.com/facebook/react-native"
-// description: "A framework for building native apps with React."
-// fork: false
-// url: "https://api.github.com/repos/facebook/react-native"
-// forks_url: "https://api.github.com/repos/facebook/react-native/forks"
-// keys_url: "https://api.github.com/repos/facebook/react-native/keys{/key_id}"
-// collaborators_url: "https://api.github.com/repos/facebook/react-native/collaborators{/collaborator}"
-// teams_url: "https://api.github.com/repos/facebook/react-native/teams"
-// hooks_url: "https://api.github.com/repos/facebook/react-native/hooks"
-// issue_events_url: "https://api.github.com/repos/facebook/react-native/issues/events{/number}"
-// events_url: "https://api.github.com/repos/facebook/react-native/events"
-// assignees_url: "https://api.github.com/repos/facebook/react-native/assignees{/user}"
-// branches_url: "https://api.github.com/repos/facebook/react-native/branches{/branch}"
-// tags_url: "https://api.github.com/repos/facebook/react-native/tags"
-// blobs_url: "https://api.github.com/repos/facebook/react-native/git/blobs{/sha}"
-// git_tags_url: "https://api.github.com/repos/facebook/react-native/git/tags{/sha}"
-// git_refs_url: "https://api.github.com/repos/facebook/react-native/git/refs{/sha}"
-// trees_url: "https://api.github.com/repos/facebook/react-native/git/trees{/sha}"
-// statuses_url: "https://api.github.com/repos/facebook/react-native/statuses/{sha}"
-// languages_url: "https://api.github.com/repos/facebook/react-native/languages"
-// stargazers_url: "https://api.github.com/repos/facebook/react-native/stargazers"
-// contributors_url: "https://api.github.com/repos/facebook/react-native/contributors"
-// subscribers_url: "https://api.github.com/repos/facebook/react-native/subscribers"
-// subscription_url: "https://api.github.com/repos/facebook/react-native/subscription"
-// commits_url: "https://api.github.com/repos/facebook/react-native/commits{/sha}"
-// git_commits_url: "https://api.github.com/repos/facebook/react-native/git/commits{/sha}"
-// comments_url: "https://api.github.com/repos/facebook/react-native/comments{/number}"
-// issue_comment_url: "https://api.github.com/repos/facebook/react-native/issues/comments{/number}"
-// contents_url: "https://api.github.com/repos/facebook/react-native/contents/{+path}"
-// compare_url: "https://api.github.com/repos/facebook/react-native/compare/{base}...{head}"
-// merges_url: "https://api.github.com/repos/facebook/react-native/merges"
-// archive_url: "https://api.github.com/repos/facebook/react-native/{archive_format}{/ref}"
-// downloads_url: "https://api.github.com/repos/facebook/react-native/downloads"
-// issues_url: "https://api.github.com/repos/facebook/react-native/issues{/number}"
-// pulls_url: "https://api.github.com/repos/facebook/react-native/pulls{/number}"
-// milestones_url: "https://api.github.com/repos/facebook/react-native/milestones{/number}"
-// notifications_url: "https://api.github.com/repos/facebook/react-native/notifications{?since,all,participating}"
-// labels_url: "https://api.github.com/repos/facebook/react-native/labels{/name}"
-// releases_url: "https://api.github.com/repos/facebook/react-native/releases{/id}"
-// deployments_url: "https://api.github.com/repos/facebook/react-native/deployments"
-// created_at: "2015-01-09T18:10:16Z"
-// updated_at: "2019-04-02T13:06:53Z"
-// pushed_at: "2019-04-02T13:24:02Z"
-// git_url: "git://github.com/facebook/react-native.git"
-// ssh_url: "git@github.com:facebook/react-native.git"
-// clone_url: "https://github.com/facebook/react-native.git"
-// svn_url: "https://github.com/facebook/react-native"
-// homepage: "https://facebook.github.io/react-native/"
-// size: 320478
-// stargazers_count: 75667
-// watchers_count: 75667
-// language: "JavaScript"
-// has_issues: true
-// has_projects: true
-// has_downloads: true
-// has_wiki: true
-// has_pages: true
-// forks_count: 16848
-// mirror_url: null
-// archived: false
-// open_issues_count: 453
-// license: Object
-// forks: 16848
-// open_issues: 453
-// watchers: 75667
-// default_branch: "master"
-// score: 77.277
+//Result Properties from Github Api
+
+// id:
+// node_id:
+// name:
+// full_name:
+// private:
+// owner:
+// html_url:
+// description:
+// fork:
+// url:
+// forks_url:
+// keys_url:
+// collaborators_url:
+// teams_url:
+// hooks_url:
+// issue_events_url:
+// events_url:
+// assignees_url:
+// branches_url:
+// tags_url:
+// blobs_url:
+// git_tags_url:
+// git_refs_url:
+// trees_url:
+// statuses_url:
+// languages_url:
+// stargazers_url:
+// contributors_url:
+// subscribers_url:
+// subscription_url:
+// commits_url:
+// git_commits_url:
+// comments_url:
+// issue_comment_url:
+// contents_url:
+// compare_url:
+// merges_url:
+// archive_url:
+// downloads_url:
+// issues_url:
+// pulls_url:
+// milestones_url:
+// notifications_url:
+// labels_url:
+// releases_url:
+// deployments_url:
+// created_at:
+// updated_at:
+// pushed_at:
+// git_url:
+// ssh_url:
+// clone_url:
+// svn_url:
+// homepage:
+// size:
+// stargazers_count:
+// watchers_count:
+// language:
+// has_issues:
+// has_projects:
+// has_downloads:
+// has_wiki:
+// has_pages:
+// forks_count:
+// mirror_url:
+// archived:
+// open_issues_count:
+// license:
+// forks:
+// open_issues:
+// watchers:
+// default_branch:
+// score:
