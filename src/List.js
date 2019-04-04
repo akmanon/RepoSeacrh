@@ -1,21 +1,39 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const List = props => {
   return (
     <React.Fragment>
-      {props.result.map(item => (
-        <div className="result-item" key={item.id}>
-          <div className="item-name">
-            <a href={item.html_url}>
-              <span>{item.name}</span>
+      {props.result.map(repo => (
+        <div className="result-repo" key={repo.id}>
+          <div className="repo-name">
+            <a href={repo.html_url}>
+              <span>{repo.name}</span>
             </a>
-            <div className="item-stars">🌟{item.stargazers_count}</div>
+            <div className="repo-stars">
+              <FontAwesomeIcon icon="star" color="#ffee58" />
+              {repo.stargazers_count.toLocaleString("currency")}
+            </div>
           </div>
-          <div className="item-full-name">
-            <span>{item.full_name}</span>
+          <div className="repo-full-name">
+            <span>{repo.full_name}</span>
           </div>
-          <div className="item-desc">
-            <span>{item.description}</span>
+          <div className="repo-desc">
+            <span>{repo.description}</span>
+          </div>
+          <div className="repo-detail">
+            <span className="pill repo-watchers">
+              <FontAwesomeIcon icon="eye" />
+              Watch: {repo.watchers.toLocaleString("currency")}
+            </span>
+            <span className="pill repo-open-issues">
+              <FontAwesomeIcon icon="info-circle" />
+              Issues: {repo.open_issues.toLocaleString("currency")}
+            </span>
+            <span className="pill repo-forks">
+              <FontAwesomeIcon icon="code-branch" />
+              Fork: {repo.forks.toLocaleString("currency")}
+            </span>
           </div>
         </div>
       ))}

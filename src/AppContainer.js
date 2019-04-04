@@ -1,5 +1,6 @@
 import React from "react";
 import { Loading } from "./Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // https://api.github.com/search/repositories?q=awe
 
 export class AppContainer extends React.Component {
@@ -22,7 +23,8 @@ export class AppContainer extends React.Component {
   handleSubmit = () => {
     this.setState({
       fetching: true,
-      error: false
+      error: false,
+      notFound: false
     });
     fetch(
       `https://api.github.com/search/repositories?q=${encodeURIComponent(
@@ -63,6 +65,9 @@ export class AppContainer extends React.Component {
             type="text"
             onChange={this.handleChange}
             value={this.state.value}
+            onKeyDown={e => {
+              if (e.keyCode === 13) this.handleSubmit();
+            }}
             placeholder="Repo name..."
           />
           <button
@@ -70,7 +75,7 @@ export class AppContainer extends React.Component {
             onClick={this.handleSubmit}
             disabled={this.state.fetching}
           >
-            🔍
+            <FontAwesomeIcon icon="search" color="#546e7a" />
           </button>
         </div>
         <div className="result">
