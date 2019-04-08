@@ -22,6 +22,10 @@ body {
   color: #607d8b;
   font-size: 28px;
 }
+.footer {
+  padding-top: 20px;
+  align-self: center;
+}
 .app-input-btn {
   width: 100%;
   display: flex;
@@ -180,13 +184,13 @@ a:hover {
   margin: 5px 2px;
 }
 .repo-forks {
-  background: #ffccbc;
+  background: #dcedc8;
 }
 .repo-watchers {
   background: #fff9c4;
 }
 .repo-open-issues {
-  background: #dcedc8;
+  background: #ffccbc;
 }
 .not-found-error {
   font-weight: 400;
