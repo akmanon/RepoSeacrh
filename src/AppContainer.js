@@ -1,9 +1,8 @@
 import React from "react";
 import { Loading } from "./Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// https://api.github.com/search/repositories?q=awe
 
-export class AppContainer extends React.Component {
+export class AppContainer extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -11,49 +10,60 @@ export class AppContainer extends React.Component {
       result: [],
       fetching: false,
       error: false,
-      notFound: false
+      notFound: false,
+      initialState: true
     };
   }
-
   handleChange = e => {
     this.setState({
       value: e.target.value
     });
   };
   handleSubmit = () => {
-    this.setState({
-      fetching: true,
-      error: false,
-      notFound: false
-    });
-    fetch(
-      `https://api.github.com/search/repositories?q=${encodeURIComponent(
-        this.state.value
-      )}`
-    )
-      .then(body => body.json())
-      .then(res => {
-        if (res.total_count === 0) {
-          this.setState({
-            result: res.items,
-            fetching: false,
-            notFound: true
-          });
-        } else {
-          this.setState({
-            result: res.items,
-            fetching: false
-          });
-        }
-      })
-      .catch(e => {
-        if (e) {
-          this.setState({
-            fetching: false,
-            error: true
-          });
-        }
+    if (this.state.value) {
+      this.setState({
+        fetching: true,
+        error: false,
+        notFound: false,
+        initialState: false
       });
+      fetch(
+        `https://api.github.com/search/repositories?q=${encodeURIComponent(
+          this.state.value
+        )}`
+      )
+        .then(body => body.json())
+        .then(res => {
+          if (res.message !== "Validation Failed") {
+            if (res.total_count === 0) {
+              this.setState({
+                result: [],
+                fetching: false,
+                notFound: true
+              });
+            } else {
+              this.setState({
+                result: res.items,
+                fetching: false
+              });
+            }
+          } else {
+            this.setState({
+              result: [],
+              fetching: false,
+              notFound: true
+            });
+          }
+        })
+        .catch(e => {
+          if (e) {
+            this.setState({
+              fetching: false,
+              error: true
+            });
+          }
+        });
+    }
   };
   render() {
     return (
@@ -85,6 +95,12 @@ export class AppContainer extends React.Component {
             notFound={this.state.notFound}
             result={this.state.result}
           />
+        </div>
+        <div className="footer">
+          Made with ❤ by{" "}
+          <a href="https://github.com/akmanon" target="_blank">
+            Ashish.
+          </a>
         </div>
       </React.Fragment>
     );

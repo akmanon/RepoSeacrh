@@ -1,0 +1,7 @@
+{
+  "name": "Repo Search",
+  "short_name": "Repo Search",
+  "description": "Search Github repo and get top 30 result.",
+  "background_color": "#000000",
+  "theme_color": "#0f4a73"
+}
